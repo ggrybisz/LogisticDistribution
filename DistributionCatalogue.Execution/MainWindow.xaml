@@ -1,0 +1,25 @@
+﻿<Window x:Class="DistributionCatalogue.Execution.cs.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <ListBox Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                 Name="lbDistributionList" ScrollViewer.VerticalScrollBarVisibility="Visible" SelectionChanged="lbDistributionList_SelectionChanged">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="{Binding AuthorName}" />
+                        <Label Content="{Binding AuthorSurname}" />
+                        <Label Content="{Binding Version}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button Grid.Row="1" Content="Execute" Height="30" Click="Button_Click" IsEnabled="False"
+                Name="btExe"/>
+    </Grid>
+</Window>
