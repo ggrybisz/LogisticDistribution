@@ -13,6 +13,12 @@ namespace DistributionCatalogue.Logistic
         private double valueX = 0;
         private String pdfOut = "PDF: ";
         private String cdfOut = "CDF: ";
+        private LogisticDistribution logisticD;
+
+        public MyWindowViewModel()
+        {
+            logisticD = new LogisticDistribution();
+        }
 
 
         public double ParameterU{
@@ -81,11 +87,11 @@ namespace DistributionCatalogue.Logistic
         }
 
         public double calculatePDF(double X, double u, double s){
-            return 5.0;
+            return logisticD.getPDF(X, u, s);
         }
         public double calculateCDF(double X, double u, double s)
         {
-            return 1.0;
+            return logisticD.getCDF(X, u, s);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

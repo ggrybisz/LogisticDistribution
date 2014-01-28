@@ -48,6 +48,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LogisticDistribution.cs" />
     <Compile Include="MyWindowViewModel.cs" />
     <Compile Include="MyEntryClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
