@@ -26,7 +26,12 @@ namespace DistributionCatalogue.Logistic.WPFWindow
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            ((MyWindowViewModel)this.DataContext).Calculate();
+            ((MyWindowViewModel)this.DataContext).CalculatePDFCDF();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            ((MyWindowViewModel)this.DataContext).CalculateQuantiles();
         }
     }
 }

@@ -2,17 +2,72 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="clr-namespace:DistributionCatalogue.Logistic"
-        Title="MyWindow" Height="300" Width="300">
+        Title="Rozkład Logistyczny" Height="426.875" Width="607" ResizeMode="NoResize">
     <Grid>
-        <Label Content="Parametry rozkładu:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="32,41,0,0" TextWrapping="Wrap" Text="{Binding Path=ParameterU}" VerticalAlignment="Top" Width="55" RenderTransformOrigin="1.164,1.652"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="130,41,0,0" TextWrapping="Wrap" Text="{Binding Path=ParameterS}" VerticalAlignment="Top" Width="54"/>
-        <Label Content="&#xB5;" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.947,0.538"/>
-        <Label Content="s" HorizontalAlignment="Left" Margin="110,41,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.447,0.462"/>
-        <Label Content="X" HorizontalAlignment="Left" Margin="10,99,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.079,0.269"/>
-        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="{Binding Path=ValueX}" VerticalAlignment="Top" Width="55" Margin="32,99,0,0"/>
-        <Label Content="{Binding Path=PDFOutput}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="130,151,0,0"/>
-        <Label Content="{Binding Path=CDFOutput}" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="130,182,0,0"/>
-        <Button Content="Oblicz" HorizontalAlignment="Left" Margin="32,151,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+
+        <Label Content="Parametry rozkładu:" HorizontalAlignment="Left" Margin="19,46,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="41,77,0,0" TextWrapping="Wrap" Text="{Binding Path=ParameterU}" VerticalAlignment="Top" Width="90"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="156,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90">
+            <TextBox.Text>
+                <Binding Path="ParameterS">
+                    <Binding.ValidationRules>
+                        <ExceptionValidationRule/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <Label Content="&#xB5;" HorizontalAlignment="Left" Margin="19,77,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.947,0.538"/>
+        <Label Content="s" HorizontalAlignment="Left" Margin="136,77,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.447,0.462"/>
+        <GroupBox Margin="19,123,314,60" Header="PDF i CDF">
+            <Grid Margin="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+
+                </Grid.RowDefinitions>
+                <Label Grid.Column="0" Grid.Row="0" Content="X" HorizontalAlignment="Right" Margin="5"/>
+                <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Path=ValueX}" Margin="5"/>
+                <Button Grid.Column="0" Grid.Row="1" Content="Oblicz" Click="Button_Click" Margin="5"/>
+                <Label Grid.Column="1" Grid.Row="1" Content="{Binding Path=PDFOutput}" HorizontalAlignment="Left" Margin="5"/>
+                <Label Grid.Column="1" Grid.Row="2" Content="{Binding Path=CDFOutput}" HorizontalAlignment="Left" Margin="5"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox Margin="292,123,10,34" Header="Kwantyle">
+            <Grid Margin="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Column="0" Grid.Row="0" Margin="5" Content="CDF" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+                <TextBox Grid.Column="1" Grid.Row="0" Margin="5">
+                    <TextBox.Text>
+                        <Binding Path="ValueCDFInput">
+                            <Binding.ValidationRules>
+                                <ExceptionValidationRule/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <Button Grid.Column="0" Grid.Row="1" Content="Oblicz" Click="Button_Click_1" Margin="5"/>
+                <Label Grid.Column="1" Grid.Row="1" Content="{Binding Path=Q1Output}" HorizontalAlignment="Left" Margin="5"/>
+                <Label Grid.Column="1" Grid.Row="2" Content="{Binding Path=Q2Output}" HorizontalAlignment="Left" Margin="5"/>
+                <Label Grid.Column="1" Grid.Row="3" Content="{Binding Path=Q3Output}" HorizontalAlignment="Left" Margin="5"/>
+                <Label Grid.Column="1" Grid.Row="4" Content="{Binding Path=Q4Output}" HorizontalAlignment="Left" Margin="5"/>
+            </Grid>
+        </GroupBox>
+        <Label Content="ROZKŁAD LOGISTYCZNY" HorizontalAlignment="Left" Margin="11,14,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

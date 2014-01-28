@@ -19,5 +19,30 @@ namespace DistributionCatalogue.Logistic
 
             return 1 / (1 + ex);
         }
+
+        public double quantileLeftSide(double cdf, double u, double s)
+        {
+            return quantileFunction(cdf, u, s);
+        }
+
+        public double quantileRightSide(double cdf, double u, double s)
+        {
+            return quantileFunction(1-cdf, u, s);
+        }
+
+        public double quantileCenterL(double cdf, double u, double s)
+        {
+            return quantileFunction(cdf/2, u, s);
+        }
+
+        public double quantileCenterR(double cdf, double u, double s)
+        {
+            return quantileFunction(1 - (cdf/2), u, s);
+        }
+
+        private double quantileFunction(double cdf, double u, double s)
+        {
+            return u + s* Math.Log(cdf/(1-cdf));
+        }
     }
 }
